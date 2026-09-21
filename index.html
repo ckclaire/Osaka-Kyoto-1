@@ -647,30 +647,27 @@
   </div>
 
   <script>
-    // ==========================================
-    // 請將下方的設定值替換為您在 Firebase 複製的金鑰
-    // ==========================================
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
+  apiKey: "AIzaSyCnm4OQ9_6pauWSxc7vsqXDyCyUtbQGmqc",
+  authDomain: "osaka-kyoto-trip-768f2.firebaseapp.com",
+  databaseURL: "https://osaka-kyoto-trip-768f2-default-rtdb.firebaseio.com",
+  projectId: "osaka-kyoto-trip-768f2",
+  storageBucket: "osaka-kyoto-trip-768f2.firebasestorage.app",
+  messagingSenderId: "1051141108876",
+  appId: "1:1051141108876:web:95967537cb49e82592f7a9"
+};
 
-    let db = null;
-    let isFirebaseReady = false;
-    try {
-      if (firebaseConfig.apiKey !== "YOUR_API_KEY") {
-        firebase.initializeApp(firebaseConfig);
-        db = firebase.database();
-        isFirebaseReady = true;
-      }
-    } catch (e) {
-      console.warn("Firebase 初始化失敗，降級為本機模式", e);
-    }
+let db = null;
+let isFirebaseReady = false;
+try {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+  db = firebase.database();
+  isFirebaseReady = true;
+} catch (e) {
+  console.error("Firebase 初始化失敗:", e);
+}
 
     const { createApp, ref, computed, onMounted, watch, nextTick } = Vue;
 
